@@ -280,6 +280,15 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .header:has(.main-nav.open) {
+        mix-blend-mode: normal;
+        color: var(--color-text);
+    }
+
+    .header:has(.main-nav.open) .hamburger span {
+        background: var(--color-text);
+    }
+
     .hamburger {
         display: flex;
     }
@@ -294,9 +303,14 @@
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: var(--color-text);
-        z-index: 100;
-        transition: right 0.5s ease;
+        background: rgba(252, 252, 252, 0.98);
+        /* var(--color-bg) but 98% opaque */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: var(--color-text);
+        z-index: -1;
+        /* Place it under the header's container so logo/button are clickable */
+        transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         gap: var(--spacing-lg);
     }
 
