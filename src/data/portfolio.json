@@ -1,0 +1,41 @@
+{
+    "projects": [
+        {
+            "id": "1",
+            "title": "Vogue Editorial",
+            "image": "/images/portfolio/1.jpg"
+        },
+        {
+            "id": "2",
+            "title": "Chanel Campaign",
+            "image": "/images/portfolio/2.jpg"
+        },
+        {
+            "id": "3",
+            "title": "Streetwear Fall",
+            "image": "/images/portfolio/3.jpg"
+        },
+        {
+            "id": "4",
+            "title": "Beauty Portrait",
+            "image": "/images/portfolio/4.jpg"
+        }
+    ],
+    "brands": [
+        {
+            "name": "Chanel"
+        },
+        {
+            "name": "Dior"
+        },
+        {
+            "name": "Vogue"
+        },
+        {
+            "name": "Prada"
+        },
+        {
+            "name": "Gucci"
+        }
+    ]
+}

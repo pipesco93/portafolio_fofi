@@ -1,0 +1,12 @@
+/* Utility classes for GSAP */
+.overflow-hidden {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Example fade-in class */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+}

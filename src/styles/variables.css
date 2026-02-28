@@ -1,0 +1,22 @@
+:root {
+  /* Colors */
+  --color-bg: #fcfcfc;
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-accent: #e0e0e0;
+  --color-white: #ffffff;
+  
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  /* Layout */
+  --container-width: 1400px;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+  
+  /* Transitions */
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
