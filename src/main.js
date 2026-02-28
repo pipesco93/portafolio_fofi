@@ -49,11 +49,16 @@ window.addEventListener('load', () => {
 const grid = document.getElementById('portfolio-grid');
 if (grid) {
     portfolioData.projects.forEach(project => {
+        const link = document.createElement('a');
+        link.href = `/project-detail.html?id=${project.id}`;
+
         const item = document.createElement('div');
         item.className = 'portfolio-item fade-up';
         // For now we just use a colored div, later an image
         // item.innerHTML = `<img src="${project.image}" alt="${project.title}" />`;
-        grid.appendChild(item);
+
+        link.appendChild(item);
+        grid.appendChild(link);
     });
 
     // Animate grid items on scroll
@@ -88,4 +93,14 @@ if (marqueeTrack) {
         duration: 20,
         ease: 'linear'
     });
+}
+
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const mainNav = document.querySelector('.main-nav');
+if (hamburger && mainNav) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mainNav.classList.toggle('open');
+  });
 }

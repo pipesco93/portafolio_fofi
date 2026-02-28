@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rates & Process - Fofi Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/styles/variables.css" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/layout.css" />
+
+    <style>
+        .rates-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-lg);
+        }
+
+        .process-step {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .process-step h3 {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.5rem;
+        }
+
+        .rate-card {
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .rate-price {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: var(--spacing-sm) 0;
+        }
+
+        @media (max-width: 768px) {
+            .rates-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-rates">
+    <div class="cursor"></div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="/" class="logo">FOFI</a>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <nav class="main-nav">
+                <a href="/">Home</a>
+                <a href="/projects.html">Projects</a>
+                <a href="/rates.html" class="active">Rates & Process</a>
+            </nav>
+        </div>
+    </header>
+
+    <main data-scroll-container style="padding-top: 150px;">
+        <section class="rates-hero">
+            <div class="container">
+                <h1 class="section-title">Rates & Process</h1>
+                <p class="about-text" style="font-size: 1.5rem; text-align: left; margin: 0;">
+                    Transparency and professionalism in every collaboration. Here is how we work together.
+                </p>
+
+                <div class="rates-container">
+                    <div class="process-col">
+                        <h2 style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">The Process</h2>
+
+                        <div class="process-step">
+                            <h3>1. Inquiry</h3>
+                            <p>Fill out the contact form with your brand details, project scope, moodboard, and proposed
+                                dates. I will review and ensure it aligns with my portfolio.</p>
+                        </div>
+                        <div class="process-step">
+                            <h3>2. Consultation</h3>
+                            <p>A quick video call to align on creative direction, wardrobe, and deliverables. We
+                                finalize the quote and sign the agreement.</p>
+                        </div>
+                        <div class="process-step">
+                            <h3>3. Shoot Day</h3>
+                            <p>Arrival on set prepared, professional, and ready to deliver the exact aesthetic and
+                                energy the campaign requires.</p>
+                        </div>
+                    </div>
+
+                    <div class="rates-col">
+                        <h2 style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">Standard Rates</h2>
+
+                        <div class="rate-card">
+                            <h3>E-Commerce / Studio</h3>
+                            <div class="rate-price">$XXX <span
+                                    style="font-size: 1rem; font-family: var(--font-sans); color: var(--color-text-muted);">/
+                                    Half Day (4hrs)</span></div>
+                            <p>Standard white-background or stylized studio shoots for product catalogs.</p>
+                        </div>
+
+                        <div class="rate-card">
+                            <h3>Editorial & Campaign</h3>
+                            <div class="rate-price">$XXXX <span
+                                    style="font-size: 1rem; font-family: var(--font-sans); color: var(--color-text-muted);">/
+                                    Full Day (8hrs)</span></div>
+                            <p>High-end fashion, beauty, or lifestyle campaigns requiring elaborate styling, location
+                                changes, and usage rights buyout considerations.</p>
+                        </div>
+
+                        <div class="rate-card" style="background: var(--color-text); color: var(--color-white);">
+                            <h3>Custom Quote</h3>
+                            <p style="margin-top: 1rem;">For runaways, music videos, or international travel, please
+                                reach out via the contact form for a tailored quote.</p>
+                            <a href="/#contact" class="submit-btn"
+                                style="background: var(--color-bg); color: var(--color-text); margin-top: 1rem; text-align: center;">Get
+                                Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="margin-top: var(--spacing-xl);">
+        <div class="container footer-container">
+            <p>&copy; 2026 Fofi. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/pages/rates.js"></script>
+</body>
+
+</html>
