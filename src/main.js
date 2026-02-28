@@ -32,6 +32,18 @@ window.addEventListener('load', () => {
         { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power4.out' }
     );
 
+    // Hero image reveal + zoom out
+    tl.fromTo('.hero-image-wrapper',
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+        "-=0.5" // Start slightly before the text finishes
+    );
+
+    tl.to('#hero-img',
+        { scale: 1, duration: 1.5, ease: 'power2.out' },
+        "-=1.0"
+    );
+
     // Minimal scroll triggers for demo
     gsap.fromTo('.about-text',
         { opacity: 0, y: 50 },
@@ -99,8 +111,8 @@ if (marqueeTrack) {
 const hamburger = document.querySelector('.hamburger');
 const mainNav = document.querySelector('.main-nav');
 if (hamburger && mainNav) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mainNav.classList.toggle('open');
-  });
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mainNav.classList.toggle('open');
+    });
 }
