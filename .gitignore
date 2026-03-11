@@ -18,6 +18,10 @@ dist-ssr
 # Raw unoptimized source images — never commit these
 source-images/
 
+# Windows Zone Identifier metadata (created when files are downloaded on Windows)
+*.Identifier
+*Zone.Identifier
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
