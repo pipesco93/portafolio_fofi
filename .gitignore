@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Netlify
+.netlify
+
+# Raw unoptimized source images — never commit these
+source-images/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

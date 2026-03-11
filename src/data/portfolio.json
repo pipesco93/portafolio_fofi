@@ -1,41 +1,79 @@
 {
-    "projects": [
-        {
-            "id": "1",
-            "title": "Vogue Editorial",
-            "image": "/images/portfolio/1.jpg"
-        },
-        {
-            "id": "2",
-            "title": "Chanel Campaign",
-            "image": "/images/portfolio/2.jpg"
-        },
-        {
-            "id": "3",
-            "title": "Streetwear Fall",
-            "image": "/images/portfolio/3.jpg"
-        },
-        {
-            "id": "4",
-            "title": "Beauty Portrait",
-            "image": "/images/portfolio/4.jpg"
-        }
-    ],
-    "brands": [
-        {
-            "name": "Chanel"
-        },
-        {
-            "name": "Dior"
-        },
-        {
-            "name": "Vogue"
-        },
-        {
-            "name": "Prada"
-        },
-        {
-            "name": "Gucci"
-        }
-    ]
+  "projects": [
+    {
+      "id": "vogue-editorial",
+      "title": "Vogue — Editorial Spread",
+      "brand": "Vogue",
+      "year": "2025",
+      "category": "Editorial",
+      "tags": ["fashion", "editorial"],
+      "featured": true,
+      "coverImage": "/images/portfolio/hero image.jpg",
+      "description": "A high-fashion editorial spread featuring avant-garde styling and dramatic lighting. Shot across multiple locations in New York.",
+      "images": [
+        "/images/portfolio/hero image.jpg",
+        "/images/portfolio/hero image.jpg"
+      ],
+      "photographer": "Juan García",
+      "location": "New York, USA"
+    },
+    {
+      "id": "chanel-campaign",
+      "title": "Chanel — Spring Campaign",
+      "brand": "Chanel",
+      "year": "2025",
+      "category": "Commercial",
+      "tags": ["fashion", "commercial", "luxury"],
+      "featured": true,
+      "coverImage": "/images/portfolio/hero image.jpg",
+      "description": "Spring/Summer 2025 commercial campaign. Clean, refined imagery for one of fashion's most iconic houses.",
+      "images": [
+        "/images/portfolio/hero image.jpg",
+        "/images/portfolio/hero image.jpg"
+      ],
+      "photographer": "Sophie Laurent",
+      "location": "Paris, France"
+    },
+    {
+      "id": "streetwear-fall",
+      "title": "Streetwear — Fall Collection",
+      "brand": "Independent",
+      "year": "2024",
+      "category": "Editorial",
+      "tags": ["streetwear", "editorial", "fashion"],
+      "featured": true,
+      "coverImage": "/images/portfolio/hero image.jpg",
+      "description": "An urban editorial exploring the intersection of high fashion and street culture. Shot on location in Brooklyn.",
+      "images": [
+        "/images/portfolio/hero image.jpg",
+        "/images/portfolio/hero image.jpg"
+      ],
+      "photographer": "Marcus Reid",
+      "location": "Brooklyn, NY"
+    },
+    {
+      "id": "beauty-portrait",
+      "title": "Beauty — Portrait Series",
+      "brand": "Independent",
+      "year": "2024",
+      "category": "Beauty",
+      "tags": ["beauty", "portrait"],
+      "featured": true,
+      "coverImage": "/images/portfolio/hero image.jpg",
+      "description": "An intimate portrait series focusing on natural beauty, light, and raw emotion.",
+      "images": [
+        "/images/portfolio/hero image.jpg",
+        "/images/portfolio/hero image.jpg"
+      ],
+      "photographer": "Ana Ruiz",
+      "location": "Miami, FL"
+    }
+  ],
+  "brands": [
+    { "name": "Chanel", "logo": "/images/brands/chanel.svg" },
+    { "name": "Dior", "logo": "/images/brands/dior.svg" },
+    { "name": "Vogue", "logo": "/images/brands/vogue.svg" },
+    { "name": "Prada", "logo": "/images/brands/prada.svg" },
+    { "name": "Gucci", "logo": "/images/brands/gucci.svg" }
+  ]
 }

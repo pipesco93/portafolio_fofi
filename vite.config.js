@@ -15,6 +15,7 @@ export default defineConfig({
                 projects: resolve(__dirname, 'projects.html'),
                 projectDetail: resolve(__dirname, 'project-detail.html'),
                 rates: resolve(__dirname, 'rates.html'),
+                notFound: resolve(__dirname, '404.html'),
             }
         }
     }

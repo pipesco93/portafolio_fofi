@@ -5,19 +5,22 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fofi - Model Portfolio</title>
+  <title>Fofi — Model Portfolio</title>
+
+  <!-- Preload hero image for fast LCP -->
+  <link rel="preload" as="image" href="/images/portfolio/hero image.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- CSS - Note: Vite pulls these together when imported in JS or here -->
   <link rel="stylesheet" href="/src/styles/variables.css" />
   <link rel="stylesheet" href="/src/styles/global.css" />
   <link rel="stylesheet" href="/src/styles/layout.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
   <link rel="stylesheet" href="/src/styles/animations.css" />
 </head>
 
@@ -32,14 +35,15 @@
       <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       <nav class="main-nav">
         <a href="/" class="active">Home</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/rates.html">Rates & Process</a>
+        <a href="/projects.html">Work</a>
+        <a href="/rates.html">Rates</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main data-scroll-container>
+  <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="container hero-container">
@@ -49,20 +53,26 @@
             <span class="overflow-hidden"><span class="title-line italic">&</span></span>
             <span class="overflow-hidden"><span class="title-line">Versatility</span></span>
           </h1>
-          <p class="hero-subtitle">International Fashion Model based in NY</p>
+          <p class="hero-subtitle">International Fashion Model · New York</p>
         </div>
         <div class="hero-image-wrapper">
-          <img src="/images/portfolio/hero image.jpg" alt="Fofi Model - Hero Shot" class="hero-image" id="hero-img">
+          <img
+            src="/images/portfolio/hero image.jpg"
+            alt="Fofi — Fashion Model"
+            class="hero-image"
+            id="hero-img"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
 
     <!-- About Section -->
+    <!-- BIO -->
     <section class="about" id="about">
       <div class="container about-container">
         <p class="about-text">
-          I am Fofi, a fashion model specializing in high-end editorial, commercial, and runway work. My portfolio
-          reflects a dynamic range of styles from classic beauty to avant-garde artistry.
+          Available for editorial, commercial, and brand campaigns.
         </p>
       </div>
     </section>
@@ -70,14 +80,11 @@
     <!-- Featured Work -->
     <section class="work" id="work">
       <div class="container work-container">
-        <div
-          style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--spacing-lg);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-lg);">
           <h2 class="section-title" style="margin-bottom: 0;">Selected Work</h2>
-          <a href="/projects.html"
-            style="font-family: var(--font-sans); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 1px solid currentColor; padding-bottom: 4px;">See
-            More Projects</a>
+          <a href="/projects.html" class="cta-link">See all work</a>
         </div>
-        <!-- We will inject the portfolio grid from data here -->
+        <!-- Featured projects injected from portfolio.json -->
         <div class="portfolio-grid" id="portfolio-grid"></div>
       </div>
     </section>
@@ -86,32 +93,66 @@
     <section class="brands" id="brands">
       <div class="marquee-container">
         <div class="marquee-track" id="marquee-track">
-          <!-- Brand logos will be injected here -->
+          <!-- Brand names injected by JS -->
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- CTA Block -->
+    <section class="cta-block" id="contact">
+      <div class="container">
+        <h2>Let's create something.</h2>
+        <div class="cta-actions">
+          <!-- SOCIAL -->
+          <a href="mailto:fofi@example.com" class="btn btn-primary">Send an email</a>
+          <a href="/projects.html" class="cta-link">View all work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact">
       <div class="container contact-container">
         <div class="contact-header">
-          <h2 class="section-title">Let's Work Together</h2>
-          <p>Available for bookings and collaborations globally.</p>
+          <h2 class="section-title">Get in touch</h2>
+          <p style="color: var(--color-text-muted);">Available for bookings and collaborations globally.</p>
         </div>
-        <form class="contact-form" id="contact-form">
+        <form
+          class="contact-form"
+          id="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden" style="display:none;">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
           <div class="form-group">
-            <input type="text" id="name" placeholder="Name" required />
+            <input type="text" name="name" placeholder="Name" required autocomplete="name" />
           </div>
           <div class="form-group">
-            <input type="email" id="email" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" required autocomplete="email" />
           </div>
           <div class="form-group">
-            <input type="text" id="agency" placeholder="Brand / Agency" />
+            <input type="text" name="agency" placeholder="Brand / Agency" autocomplete="organization" />
           </div>
           <div class="form-group">
-            <textarea id="details" rows="4" placeholder="Project Details" required></textarea>
+            <select name="project-type">
+              <option value="" disabled selected>Project Type</option>
+              <option value="editorial">Editorial</option>
+              <option value="commercial">Commercial</option>
+              <option value="campaign">Campaign</option>
+              <option value="beauty">Beauty</option>
+              <option value="runway">Runway</option>
+              <option value="other">Other</option>
+            </select>
           </div>
-          <button type="submit" class="submit-btn" id="submit-btn" aria-label="Send Inquiry">Send Inquiry</button>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="Project details" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" aria-label="Send Inquiry">Send Inquiry</button>
         </form>
       </div>
     </section>
@@ -120,11 +161,13 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-container">
-      <p>&copy; 2026 Fofi. All rights reserved.</p>
+      <a href="/" class="logo">FOFI</a>
+      <!-- SOCIAL -->
       <div class="social-links">
-        <a href="#">Instagram</a>
-        <a href="#">Email</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="mailto:fofi@example.com" aria-label="Email">Email</a>
       </div>
+      <p style="color: var(--color-text-muted); font-size: var(--text-xs);">&copy; 2026 Fofi. All rights reserved.</p>
     </div>
   </footer>
 

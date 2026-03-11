@@ -4,62 +4,84 @@ import portfolioData from '../data/portfolio.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Custom Cursor Logic
+// ===========================
+// CUSTOM CURSOR
+// ===========================
 const cursor = document.querySelector('.cursor');
-const interactiveElements = document.querySelectorAll('a, button, .portfolio-item');
-
-window.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.1,
-        ease: "power2.out"
-    });
-});
-
-interactiveElements.forEach(el => {
+if (cursor && window.matchMedia('(pointer: fine)').matches) {
+  window.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' });
+  });
+  document.querySelectorAll('a, button, .portfolio-item').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-});
-
-// Render All Projects Grid
-const grid = document.getElementById('portfolio-grid-full');
-if (grid) {
-    portfolioData.projects.forEach(project => {
-        // Generate the path to the dynamic detailed page
-        const link = document.createElement('a');
-        link.href = `/project-detail.html?id=${project.id}`;
-
-        const item = document.createElement('div');
-        item.className = 'portfolio-item fade-up';
-
-        // Create an image or a placeholder
-        if (project.image) {
-            item.innerHTML = `<img src="${project.image}" alt="${project.title}" />`;
-        } else {
-            item.innerHTML = `<h3>${project.title}</h3>`;
-        }
-
-        link.appendChild(item);
-        grid.appendChild(link);
-    });
-
-    // Basic stagger animation on load
-    gsap.fromTo('.portfolio-item',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }
-    );
+  });
+} else if (cursor) {
+  cursor.style.display = 'none';
 }
 
-// Global page intro animation
-gsap.from('.section-title', { opacity: 0, y: 30, duration: 1, delay: 0.2 });
+// ===========================
+// RENDER ALL PROJECTS GRID
+// ===========================
+const grid = document.getElementById('portfolio-grid-full');
+if (grid) {
+  portfolioData.projects.forEach(project => {
+    const link = document.createElement('a');
+    link.href = `/project-detail.html?id=${project.id}`;
+    link.setAttribute('aria-label', project.title);
 
-// Mobile Menu Toggle
+    const item = document.createElement('div');
+    item.className = 'portfolio-item';
+
+    if (project.coverImage) {
+      const img = document.createElement('img');
+      img.src = project.coverImage;
+      img.alt = project.title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      item.appendChild(img);
+    }
+
+    // Hover overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'portfolio-item-overlay';
+    overlay.innerHTML = `
+      <span class="portfolio-item-brand">${project.brand || ''}</span>
+      <span class="portfolio-item-title">${project.title}</span>
+    `;
+    item.appendChild(overlay);
+
+    link.appendChild(item);
+    grid.appendChild(link);
+  });
+
+  gsap.fromTo('.portfolio-item',
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.2 }
+  );
+}
+
+// Page title entrance
+gsap.fromTo('.section-title',
+  { opacity: 0, y: 30 },
+  { opacity: 1, y: 0, duration: 1, ease: 'power2.out', delay: 0.1 }
+);
+
+// ===========================
+// MOBILE MENU
+// ===========================
 const hamburger = document.querySelector('.hamburger');
 const mainNav = document.querySelector('.main-nav');
 if (hamburger && mainNav) {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mainNav.classList.toggle('open');
+  });
+
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mainNav.classList.remove('open');
+    });
   });
 }

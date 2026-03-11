@@ -1,0 +1,44 @@
+{
+  "currency": "USD",
+  "note": "All rates are starting prices. Final quote depends on project scope and usage rights. Rates do not include travel.",
+  "categories": [
+    {
+      "id": "hourly",
+      "title": "Hourly Rate",
+      "icon": "clock",
+      "items": [
+        { "label": "First hour (minimum)", "price": 150 },
+        { "label": "Each additional hour", "price": 120 }
+      ]
+    },
+    {
+      "id": "day-rate",
+      "title": "Full Day",
+      "icon": "sun",
+      "items": [
+        { "label": "Half day (4 hrs)", "price": 500 },
+        { "label": "Full day (8 hrs)", "price": 900 }
+      ]
+    },
+    {
+      "id": "makeup",
+      "title": "Hair & Makeup",
+      "icon": "star",
+      "items": [
+        { "label": "Basic glam", "price": 80 },
+        { "label": "Editorial / full look", "price": 150 }
+      ]
+    },
+    {
+      "id": "usage",
+      "title": "Usage Rights",
+      "icon": "globe",
+      "items": [
+        { "label": "Personal / lookbook", "price": 0, "note": "Included" },
+        { "label": "Social media (1 year)", "price": 200 },
+        { "label": "Commercial / print", "price": "Quote" },
+        { "label": "Exclusive buyout", "price": "Quote" }
+      ]
+    }
+  ]
+}

@@ -2,148 +2,151 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rates & Process - Fofi Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rates & Availability — Fofi</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="/src/styles/variables.css" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <link rel="stylesheet" href="/src/styles/layout.css" />
-
-    <style>
-        .rates-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-lg);
-        }
-
-        .process-step {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .process-step h3 {
-            font-family: var(--font-sans);
-            font-weight: 500;
-            margin-bottom: var(--spacing-sm);
-            font-size: 1.5rem;
-        }
-
-        .rate-card {
-            padding: var(--spacing-md);
-            border: 1px solid var(--color-accent);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .rate-price {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin: var(--spacing-sm) 0;
-        }
-
-        @media (max-width: 768px) {
-            .rates-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <link rel="stylesheet" href="/src/styles/layout.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
 </head>
 
 <body class="page-rates">
-    <div class="cursor"></div>
+  <div class="cursor"></div>
 
-    <header class="header">
-        <div class="container nav-container">
-            <a href="/" class="logo">FOFI</a>
-            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-        <nav class="main-nav">
-                <a href="/">Home</a>
-                <a href="/projects.html">Projects</a>
-                <a href="/rates.html" class="active">Rates & Process</a>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container nav-container">
+      <a href="/" class="logo">FOFI</a>
+      <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/projects.html">Work</a>
+        <a href="/rates.html" class="active">Rates</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main data-scroll-container style="padding-top: 150px;">
-        <section class="rates-hero">
-            <div class="container">
-                <h1 class="section-title">Rates & Process</h1>
-                <p class="about-text" style="font-size: 1.5rem; text-align: left; margin: 0;">
-                    Transparency and professionalism in every collaboration. Here is how we work together.
-                </p>
+  <main style="padding-top: 150px;">
+    <!-- Page Hero -->
+    <section style="padding-bottom: var(--space-lg);">
+      <div class="container">
+        <h1 class="section-title reveal">Rates & Availability</h1>
+        <p class="reveal" style="font-size: var(--text-lg); color: var(--color-text-muted); max-width: 600px;">
+          Transparency and professionalism in every collaboration. Here is how we work together.
+        </p>
+      </div>
+    </section>
 
-                <div class="rates-container">
-                    <div class="process-col">
-                        <h2 style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">The Process</h2>
+    <!-- Process + Rates -->
+    <section style="padding-bottom: var(--space-xl);">
+      <div class="container">
+        <div class="rates-page-container">
+          <!-- The Process (hardcoded — not data-driven) -->
+          <div class="process-col">
+            <h2 class="reveal" style="font-size: var(--text-2xl); margin-bottom: var(--space-md);">The Process</h2>
 
-                        <div class="process-step">
-                            <h3>1. Inquiry</h3>
-                            <p>Fill out the contact form with your brand details, project scope, moodboard, and proposed
-                                dates. I will review and ensure it aligns with my portfolio.</p>
-                        </div>
-                        <div class="process-step">
-                            <h3>2. Consultation</h3>
-                            <p>A quick video call to align on creative direction, wardrobe, and deliverables. We
-                                finalize the quote and sign the agreement.</p>
-                        </div>
-                        <div class="process-step">
-                            <h3>3. Shoot Day</h3>
-                            <p>Arrival on set prepared, professional, and ready to deliver the exact aesthetic and
-                                energy the campaign requires.</p>
-                        </div>
-                    </div>
-
-                    <div class="rates-col">
-                        <h2 style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">Standard Rates</h2>
-
-                        <div class="rate-card">
-                            <h3>E-Commerce / Studio</h3>
-                            <div class="rate-price">$XXX <span
-                                    style="font-size: 1rem; font-family: var(--font-sans); color: var(--color-text-muted);">/
-                                    Half Day (4hrs)</span></div>
-                            <p>Standard white-background or stylized studio shoots for product catalogs.</p>
-                        </div>
-
-                        <div class="rate-card">
-                            <h3>Editorial & Campaign</h3>
-                            <div class="rate-price">$XXXX <span
-                                    style="font-size: 1rem; font-family: var(--font-sans); color: var(--color-text-muted);">/
-                                    Full Day (8hrs)</span></div>
-                            <p>High-end fashion, beauty, or lifestyle campaigns requiring elaborate styling, location
-                                changes, and usage rights buyout considerations.</p>
-                        </div>
-
-                        <div class="rate-card" style="background: var(--color-text); color: var(--color-white);">
-                            <h3>Custom Quote</h3>
-                            <p style="margin-top: 1rem;">For runaways, music videos, or international travel, please
-                                reach out via the contact form for a tailored quote.</p>
-                            <a href="/#contact" class="submit-btn"
-                                style="background: var(--color-bg); color: var(--color-text); margin-top: 1rem; text-align: center;">Get
-                                Quote</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="process-step reveal">
+              <h3>1. Inquiry</h3>
+              <p>Fill out the contact form below with your brand details, project scope, moodboard, and proposed
+                dates. I will review and ensure it aligns with my portfolio.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer" style="margin-top: var(--spacing-xl);">
-        <div class="container footer-container">
-            <p>&copy; 2026 Fofi. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">Email</a>
+            <div class="process-step reveal">
+              <h3>2. Consultation</h3>
+              <p>A quick call to align on creative direction, wardrobe, and deliverables. We finalize the
+                quote and sign the agreement.</p>
             </div>
-        </div>
-    </footer>
+            <div class="process-step reveal">
+              <h3>3. Shoot Day</h3>
+              <p>Arrival on set prepared, professional, and ready to deliver the exact aesthetic and energy the
+                campaign requires.</p>
+            </div>
+          </div>
 
-    <script type="module" src="/src/pages/rates.js"></script>
+          <!-- Rates Grid (rendered from rates.json by JS) -->
+          <div class="rates-col">
+            <h2 class="reveal" style="font-size: var(--text-2xl); margin-bottom: var(--space-md);">Standard Rates</h2>
+            <div class="rates-grid" id="rates-grid">
+              <!-- Rate cards injected by rates.js -->
+            </div>
+            <p class="rates-note reveal" id="rates-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact" style="background-color: var(--color-bg-alt);">
+      <div class="container contact-container">
+        <div class="contact-header">
+          <h2 class="section-title reveal">Request a Quote</h2>
+          <p class="reveal" style="color: var(--color-text-muted);">
+            All rates negotiable for long-term collaborations.<br>Rates do not include travel.
+          </p>
+        </div>
+        <form
+          class="contact-form reveal"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <input type="text" name="agency" placeholder="Brand / Agency" autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <select name="project-type">
+              <option value="" disabled selected>Project Type</option>
+              <option value="editorial">Editorial</option>
+              <option value="commercial">Commercial</option>
+              <option value="campaign">Campaign</option>
+              <option value="beauty">Beauty</option>
+              <option value="runway">Runway</option>
+              <option value="other">Other / Custom Quote</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="Project details, dates, budget range" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: 0;">
+    <div class="container footer-container">
+      <a href="/" class="logo">FOFI</a>
+      <!-- SOCIAL -->
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="mailto:fofi@example.com" aria-label="Email">Email</a>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--text-xs);">&copy; 2026 Fofi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/pages/rates.js"></script>
 </body>
 
 </html>

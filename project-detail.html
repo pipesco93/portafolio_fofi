@@ -2,88 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Detail - Fofi Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project — Fofi</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="/src/styles/variables.css" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <link rel="stylesheet" href="/src/styles/layout.css" />
-
-    <style>
-        .project-hero {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .project-title {
-            font-size: clamp(3rem, 6vw, 5rem);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .project-meta {
-            color: var(--color-text-muted);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <link rel="stylesheet" href="/src/styles/layout.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
 </head>
 
 <body class="page-project-detail">
-    <div class="cursor"></div>
+  <div class="cursor"></div>
 
-    <header class="header">
-        <div class="container nav-container">
-            <a href="/" class="logo">FOFI</a>
-            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-        <nav class="main-nav">
-                <a href="/">Home</a>
-                <a href="/projects.html" class="active">Projects</a>
-                <a href="/rates.html">Rates & Process</a>
-            </nav>
+  <header class="header">
+    <div class="container nav-container">
+      <a href="/" class="logo">FOFI</a>
+      <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/projects.html" class="active">Work</a>
+        <a href="/rates.html">Rates</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: 120px;">
+    <div class="container">
+      <!-- Project Header: brand, title, meta -->
+      <div class="project-header">
+        <p class="project-brand" id="pd-brand">Loading...</p>
+        <h1 class="project-title" id="pd-title"></h1>
+        <div class="project-meta" id="pd-meta"></div>
+      </div>
+
+      <!-- Hero Image — first image, full width -->
+      <div class="project-hero-image" id="pd-hero-image"></div>
+
+      <!-- Gallery — remaining images in 2-col staggered grid -->
+      <div class="gallery-grid" id="pd-gallery"></div>
+
+      <!-- Description -->
+      <p class="project-description" id="pd-description"></p>
+
+      <!-- Prev / Next Navigation -->
+      <nav class="project-nav" id="pd-nav"></nav>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-block">
+      <div class="container">
+        <h2>Interested in working together?</h2>
+        <div class="cta-actions">
+          <a href="/#contact" class="btn btn-primary">Get in touch</a>
+          <a href="/projects.html" class="cta-link">View all work</a>
         </div>
-    </header>
+      </div>
+    </section>
+  </main>
 
-    <main data-scroll-container style="padding-top: 150px;">
-        <section class="project-detail-content">
-            <div class="container">
-                <div class="project-hero">
-                    <h1 class="project-title" id="pd-title">Loading...</h1>
-                    <div class="project-meta" id="pd-meta"></div>
-                </div>
-                <div class="gallery-grid" id="pd-gallery">
-                    <!-- Images injected here -->
-                </div>
-            </div>
-        </section>
-    </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <a href="/" class="logo">FOFI</a>
+      <!-- SOCIAL -->
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="mailto:fofi@example.com" aria-label="Email">Email</a>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--text-xs);">&copy; 2026 Fofi. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <footer class="footer" style="margin-top: var(--spacing-xl);">
-        <div class="container footer-container">
-            <p>&copy; 2026 Fofi. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">Email</a>
-            </div>
-        </div>
-    </footer>
-
-    <script type="module" src="/src/pages/projectDetail.js"></script>
+  <script type="module" src="/src/pages/projectDetail.js"></script>
 </body>
 
 </html>

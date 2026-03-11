@@ -1,22 +1,56 @@
 :root {
-  /* Colors */
-  --color-bg: #fcfcfc;
-  --color-text: #1a1a1a;
-  --color-text-muted: #666666;
-  --color-accent: #e0e0e0;
+  /* ===========================
+     COLORS
+     =========================== */
+  --color-bg:          #faf9f7;   /* Page background — warm off-white */
+  --color-bg-alt:      #f0ede8;   /* Alternate sections, cards */
+  --color-surface:     #ffffff;   /* Cards, nav background */
+  --color-text:        #1a1a1a;   /* Body text */
+  --color-text-muted:  #8a8580;   /* Captions, labels, metadata */
+  --color-accent:      #a08060;   /* Hover states, accents — warm brown */
+  --color-accent-light:#c9b89a;   /* Decorative lines, dividers */
+  --color-border:      #e8e4df;   /* Card borders, section dividers */
+
+  /* Legacy alias — keep while layout.css still references --color-white */
   --color-white: #ffffff;
-  
-  /* Typography */
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
-  
-  /* Layout */
+
+  /* ===========================
+     TYPOGRAPHY
+     =========================== */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+
+  --text-xs:   0.75rem;    /* 12px — captions, tags */
+  --text-sm:   0.875rem;   /* 14px — labels, small body */
+  --text-base: 1rem;       /* 16px — body */
+  --text-lg:   1.25rem;    /* 20px — intro text */
+  --text-xl:   2rem;       /* 32px — section headers */
+  --text-2xl:  3.5rem;     /* 56px — page heroes */
+  --text-hero: clamp(3rem, 10vw, 7rem); /* Responsive hero type */
+
+  /* ===========================
+     SPACING
+     =========================== */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  8rem;
+  --space-2xl: 12rem;
+
+  /* Legacy aliases used by layout.css */
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+
+  /* ===========================
+     LAYOUT
+     =========================== */
   --container-width: 1400px;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-  
-  /* Transitions */
+
+  /* ===========================
+     TRANSITIONS
+     =========================== */
   --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }

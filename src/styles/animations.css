@@ -1,12 +1,48 @@
-/* Utility classes for GSAP */
+/* ===========================
+   ANIMATIONS
+   Keyframes, transition utilities, cursor
+   =========================== */
+
+/* Overflow wrapper for text line reveals */
 .overflow-hidden {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: top;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
 }
 
-/* Example fade-in class */
+/* GSAP starting state — JS animates these */
 .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Reveal utility class for scroll triggers */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ===========================
+   PREFERS-REDUCED-MOTION
+   Disable all animations for users who prefer it
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up,
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cursor {
+    display: none;
+  }
 }
