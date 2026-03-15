@@ -1,72 +1,109 @@
 {
   "projects": [
     {
-      "id": "vogue-editorial",
-      "title": "Vogue — Editorial Spread",
-      "brand": "Vogue",
+      "id": "editorial-1",
+      "title": "Editorial — Volume I",
+      "brand": "Independent",
       "year": "2025",
       "category": "Editorial",
       "tags": ["fashion", "editorial"],
       "featured": true,
-      "coverImage": "/images/portfolio/hero image.jpg",
-      "description": "A high-fashion editorial spread featuring avant-garde styling and dramatic lighting. Shot across multiple locations in New York.",
+      "coverImage": "/images/portfolio/editorial-1/cover.webp",
+      "description": "A high-fashion editorial exploring texture, light, and movement. Shot on location in New York.",
       "images": [
-        "/images/portfolio/hero image.jpg",
-        "/images/portfolio/hero image.jpg"
+        "/images/portfolio/editorial-1/01.webp",
+        "/images/portfolio/editorial-1/02.webp",
+        "/images/portfolio/editorial-1/03.webp",
+        "/images/portfolio/editorial-1/04.webp",
+        "/images/portfolio/editorial-1/05.webp",
+        "/images/portfolio/editorial-1/06.webp"
       ],
-      "photographer": "Juan García",
+      "photographer": "TBD",
       "location": "New York, USA"
     },
     {
-      "id": "chanel-campaign",
-      "title": "Chanel — Spring Campaign",
-      "brand": "Chanel",
+      "id": "commercial-1",
+      "title": "Commercial — Campaign",
+      "brand": "TBD",
       "year": "2025",
       "category": "Commercial",
-      "tags": ["fashion", "commercial", "luxury"],
+      "tags": ["fashion", "commercial"],
       "featured": true,
-      "coverImage": "/images/portfolio/hero image.jpg",
-      "description": "Spring/Summer 2025 commercial campaign. Clean, refined imagery for one of fashion's most iconic houses.",
+      "coverImage": "/images/portfolio/commercial-1/cover.webp",
+      "description": "Commercial campaign shoot. Clean, versatile imagery for brand use across print and digital.",
       "images": [
-        "/images/portfolio/hero image.jpg",
-        "/images/portfolio/hero image.jpg"
+        "/images/portfolio/commercial-1/01.webp",
+        "/images/portfolio/commercial-1/02.webp",
+        "/images/portfolio/commercial-1/03.webp",
+        "/images/portfolio/commercial-1/04.webp",
+        "/images/portfolio/commercial-1/05.webp",
+        "/images/portfolio/commercial-1/06.webp"
       ],
-      "photographer": "Sophie Laurent",
-      "location": "Paris, France"
+      "photographer": "TBD",
+      "location": "TBD"
     },
     {
-      "id": "streetwear-fall",
-      "title": "Streetwear — Fall Collection",
-      "brand": "Independent",
-      "year": "2024",
-      "category": "Editorial",
-      "tags": ["streetwear", "editorial", "fashion"],
-      "featured": true,
-      "coverImage": "/images/portfolio/hero image.jpg",
-      "description": "An urban editorial exploring the intersection of high fashion and street culture. Shot on location in Brooklyn.",
-      "images": [
-        "/images/portfolio/hero image.jpg",
-        "/images/portfolio/hero image.jpg"
-      ],
-      "photographer": "Marcus Reid",
-      "location": "Brooklyn, NY"
-    },
-    {
-      "id": "beauty-portrait",
+      "id": "beauty-1",
       "title": "Beauty — Portrait Series",
       "brand": "Independent",
-      "year": "2024",
+      "year": "2025",
       "category": "Beauty",
       "tags": ["beauty", "portrait"],
       "featured": true,
-      "coverImage": "/images/portfolio/hero image.jpg",
-      "description": "An intimate portrait series focusing on natural beauty, light, and raw emotion.",
+      "coverImage": "/images/portfolio/beauty-1/cover.webp",
+      "description": "An intimate portrait series focused on natural beauty, skin, and raw emotion under soft natural light.",
       "images": [
-        "/images/portfolio/hero image.jpg",
-        "/images/portfolio/hero image.jpg"
+        "/images/portfolio/beauty-1/01.webp",
+        "/images/portfolio/beauty-1/02.webp",
+        "/images/portfolio/beauty-1/03.webp",
+        "/images/portfolio/beauty-1/04.webp",
+        "/images/portfolio/beauty-1/05.webp",
+        "/images/portfolio/beauty-1/06.webp"
       ],
-      "photographer": "Ana Ruiz",
-      "location": "Miami, FL"
+      "photographer": "TBD",
+      "location": "TBD"
+    },
+    {
+      "id": "campaign-1",
+      "title": "Brand Campaign",
+      "brand": "TBD",
+      "year": "2024",
+      "category": "Commercial",
+      "tags": ["fashion", "commercial", "campaign"],
+      "featured": true,
+      "coverImage": "/images/portfolio/campaign-1/cover.webp",
+      "description": "Full brand campaign production. From concept to final delivery across all campaign touchpoints.",
+      "images": [
+        "/images/portfolio/campaign-1/01.webp",
+        "/images/portfolio/campaign-1/02.webp",
+        "/images/portfolio/campaign-1/03.webp",
+        "/images/portfolio/campaign-1/04.webp",
+        "/images/portfolio/campaign-1/05.webp",
+        "/images/portfolio/campaign-1/06.webp"
+      ],
+      "photographer": "TBD",
+      "location": "TBD"
+    },
+    {
+      "id": "lifestyle-1",
+      "title": "Lifestyle — Lookbook",
+      "brand": "Independent",
+      "year": "2024",
+      "category": "Editorial",
+      "tags": ["lifestyle", "editorial", "lookbook"],
+      "featured": false,
+      "coverImage": "/images/portfolio/lifestyle-1/cover.webp",
+      "description": "Lifestyle lookbook shoot capturing movement and personality in natural outdoor settings.",
+      "images": [
+        "/images/portfolio/lifestyle-1/01.webp",
+        "/images/portfolio/lifestyle-1/02.webp",
+        "/images/portfolio/lifestyle-1/03.webp",
+        "/images/portfolio/lifestyle-1/04.webp",
+        "/images/portfolio/lifestyle-1/05.webp",
+        "/images/portfolio/lifestyle-1/06.webp"
+      ],
+      "photographer": "TBD",
+      "location": "TBD"
     }
   ],
   "brands": [

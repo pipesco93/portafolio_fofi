@@ -5,7 +5,7 @@ import portfolioData from './data/portfolio.json';
 gsap.registerPlugin(ScrollTrigger);
 
 // ===========================
-// CUSTOM CURSOR (desktop / fine pointer only)
+// CUSTOM CURSOR (desktop only)
 // ===========================
 const cursor = document.querySelector('.cursor');
 if (cursor && window.matchMedia('(pointer: fine)').matches) {
@@ -22,9 +22,80 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
 }
 
 // ===========================
+// HEADER — SCROLL BEHAVIOR
+// ===========================
+const header = document.querySelector('.header');
+if (header) {
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // Run once on load in case page is already scrolled
+}
+
+// ===========================
+// MOBILE MENU
+// ===========================
+const hamburger = document.querySelector('.hamburger');
+const mainNav = document.querySelector('.main-nav');
+const navLinks = mainNav ? mainNav.querySelectorAll('a') : [];
+
+function openMenu() {
+  hamburger.classList.add('open');
+  mainNav.classList.add('open');
+  document.body.classList.add('menu-open');
+
+  // GSAP stagger — links slide up and fade in
+  gsap.fromTo(navLinks,
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, stagger: 0.08, duration: 0.55, ease: 'power3.out', delay: 0.1 }
+  );
+}
+
+function closeMenu() {
+  // Animate links out, then hide overlay
+  gsap.to(navLinks, {
+    y: -20, opacity: 0, stagger: 0.04, duration: 0.25, ease: 'power2.in',
+    onComplete: () => {
+      mainNav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      hamburger.classList.remove('open');
+    }
+  });
+}
+
+if (hamburger && mainNav) {
+  hamburger.addEventListener('click', () => {
+    if (mainNav.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close when a nav link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on tap outside the nav (on the overlay backdrop)
+  mainNav.addEventListener('click', (e) => {
+    if (e.target === mainNav) closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('open')) closeMenu();
+  });
+}
+
+// ===========================
 // HERO ANIMATIONS
 // ===========================
 window.addEventListener('load', () => {
+  // Skip animations if user prefers reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const tl = gsap.timeline();
 
   tl.fromTo('.title-line',
@@ -54,12 +125,25 @@ window.addEventListener('load', () => {
 // ===========================
 // SCROLL REVEALS
 // ===========================
-gsap.from('.about-text', {
-  opacity: 0, y: 40, duration: 0.9, ease: 'power2.out',
-  scrollTrigger: { trigger: '.about', start: 'top 85%' }
+const revealTargets = [
+  { selector: '.about-text', start: 'top 85%' },
+  { selector: '.section-title', start: 'top 88%' },
+  { selector: '.contact-header', start: 'top 88%' },
+  { selector: '.cta-block h2', start: 'top 85%' },
+  { selector: '.cta-actions', start: 'top 88%' },
+  { selector: '.footer-container', start: 'top 95%' },
+];
+
+revealTargets.forEach(({ selector, start }) => {
+  const els = document.querySelectorAll(selector);
+  if (!els.length) return;
+  gsap.from(els, {
+    opacity: 0, y: 35, duration: 0.85, ease: 'power2.out',
+    scrollTrigger: { trigger: els[0], start }
+  });
 });
 
-// Parallax on hero image — desktop only, for performance
+// Parallax on hero image — desktop only
 if (window.matchMedia('(min-width: 1024px)').matches) {
   gsap.to('#hero-img', {
     scrollTrigger: { trigger: '.hero', scrub: 1 },
@@ -72,7 +156,6 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
 // ===========================
 const grid = document.getElementById('portfolio-grid');
 if (grid) {
-  // Max 4 featured projects on the home page
   const featured = portfolioData.projects
     .filter(p => p.featured)
     .slice(0, 4);
@@ -94,7 +177,6 @@ if (grid) {
       item.appendChild(img);
     }
 
-    // Hover overlay: brand + title
     const overlay = document.createElement('div');
     overlay.className = 'portfolio-item-overlay';
     overlay.innerHTML = `
@@ -106,6 +188,32 @@ if (grid) {
     link.appendChild(item);
     grid.appendChild(link);
   });
+
+  // Touch: tap to reveal overlay, tap again to navigate
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    grid.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        if (!item.classList.contains('touch-active')) {
+          e.preventDefault();
+          // Close any other open items
+          grid.querySelectorAll('.portfolio-item.touch-active').forEach(other => {
+            other.classList.remove('touch-active');
+          });
+          item.classList.add('touch-active');
+        }
+        // If already active, let the link navigate (don't preventDefault)
+      });
+    });
+
+    // Tap outside closes touch overlays
+    document.addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.portfolio-item')) {
+        grid.querySelectorAll('.portfolio-item.touch-active').forEach(item => {
+          item.classList.remove('touch-active');
+        });
+      }
+    }, { passive: true });
+  }
 
   gsap.fromTo('.portfolio-item',
     { opacity: 0, y: 50 },
@@ -128,7 +236,7 @@ if (marqueeTrack && portfolioData.brands.length) {
     marqueeTrack.appendChild(el);
   });
 
-  // Duplicate for seamless infinite loop
+  // Duplicate for seamless loop
   marqueeTrack.innerHTML += marqueeTrack.innerHTML;
 
   const marqueeAnim = gsap.to('.marquee-track', {
@@ -138,27 +246,19 @@ if (marqueeTrack && portfolioData.brands.length) {
     ease: 'linear'
   });
 
-  // Pause on hover
   marqueeTrack.addEventListener('mouseenter', () => marqueeAnim.pause());
   marqueeTrack.addEventListener('mouseleave', () => marqueeAnim.resume());
 }
 
 // ===========================
-// MOBILE MENU
+// SMOOTH SCROLL (anchor links)
 // ===========================
-const hamburger = document.querySelector('.hamburger');
-const mainNav = document.querySelector('.main-nav');
-if (hamburger && mainNav) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mainNav.classList.toggle('open');
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
-
-  // Close menu when a link is clicked
-  mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mainNav.classList.remove('open');
-    });
-  });
-}
+});

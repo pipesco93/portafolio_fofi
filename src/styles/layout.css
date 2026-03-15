@@ -5,7 +5,9 @@
     padding: 0 var(--spacing-md);
 }
 
-/* Header */
+/* ===========================
+   HEADER / NAV
+   =========================== */
 .header {
     position: fixed;
     top: 0;
@@ -15,6 +17,21 @@
     z-index: 100;
     mix-blend-mode: difference;
     color: #fff;
+    transition: background-color 0.45s ease, padding 0.45s ease;
+}
+
+/* Scrolled state — frosted glass, drop blend mode */
+.header.scrolled {
+    mix-blend-mode: normal;
+    background-color: rgba(250, 249, 247, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--color-text);
+    padding: calc(var(--spacing-md) * 0.7) 0;
+}
+
+.header.scrolled .hamburger span {
+    background-color: var(--color-text);
 }
 
 .nav-container {
@@ -61,6 +78,11 @@
     width: 100%;
 }
 
+/* Hide mobile-only elements on desktop */
+.menu-social {
+    display: none;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -70,33 +92,42 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 105;
+    z-index: 110;
     padding: 12px 0;
+    position: relative;
 }
 
 .hamburger span {
     width: 30px;
     height: 2px;
     background: #fff;
-    transition: all 0.3s linear;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
-    transform-origin: 1px;
+    transform-origin: center;
+    display: block;
 }
 
 .hamburger.open span:first-child {
-    transform: rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
     opacity: 0;
-    transform: translateX(20px);
+    transform: scaleX(0);
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Hero Section */
+/* Body scroll lock when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -145,7 +176,9 @@
     transform: scale(1.1);
 }
 
-/* About Section */
+/* ===========================
+   ABOUT SECTION
+   =========================== */
 .about {
     padding: var(--spacing-xl) 0;
 }
@@ -158,7 +191,9 @@
     text-align: center;
 }
 
-/* Work Section */
+/* ===========================
+   WORK SECTION
+   =========================== */
 .work {
     padding: var(--spacing-xl) 0;
 }
@@ -193,7 +228,14 @@
     transform: scale(1.05);
 }
 
-/* Marquee */
+/* Touch devices: show overlay when tapped */
+.portfolio-item.touch-active .portfolio-item-overlay {
+    opacity: 1;
+}
+
+/* ===========================
+   BRAND MARQUEE
+   =========================== */
 .brands {
     padding: var(--spacing-lg) 0;
     border-top: 1px solid var(--color-border);
@@ -219,7 +261,9 @@
     text-transform: uppercase;
 }
 
-/* Contact Section */
+/* ===========================
+   CONTACT SECTION
+   =========================== */
 .contact {
     padding: var(--spacing-xl) 0;
 }
@@ -243,7 +287,7 @@
     border-bottom: 1px solid var(--color-border);
     background: transparent;
     font-family: var(--font-sans);
-    font-size: 1rem; /* 16px — prevents iOS auto-zoom */
+    font-size: 1rem;
     color: var(--color-text);
     resize: vertical;
     -webkit-appearance: none;
@@ -267,7 +311,7 @@
     padding: 0.875rem 2.5rem;
     background-color: var(--color-text);
     color: var(--color-surface);
-    border-radius: 2px; /* Editorial — no pills */
+    border-radius: 2px;
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     text-transform: uppercase;
@@ -275,14 +319,16 @@
     transition: background-color 0.3s;
     cursor: pointer;
     border: none;
-    min-height: 48px; /* Touch target */
+    min-height: 48px;
 }
 
 .submit-btn:hover {
     background-color: var(--color-accent);
 }
 
-/* Footer */
+/* ===========================
+   FOOTER
+   =========================== */
 .footer {
     padding: var(--spacing-md) 0;
     border-top: 1px solid var(--color-border);
@@ -310,11 +356,16 @@
     color: var(--color-text);
 }
 
-/* Responsive */
+/* ===========================
+   RESPONSIVE — MOBILE
+   =========================== */
 @media (max-width: 768px) {
+
+    /* When menu is open, header switches to normal (no blend mode) */
     .header:has(.main-nav.open) {
         mix-blend-mode: normal;
         color: var(--color-text);
+        background-color: transparent;
     }
 
     .header:has(.main-nav.open) .hamburger span {
@@ -325,6 +376,7 @@
         display: flex;
     }
 
+    /* Full-screen overlay menu — fade in instead of slide */
     .main-nav {
         display: flex;
         flex-direction: column;
@@ -332,25 +384,51 @@
         align-items: center;
         position: fixed;
         top: 0;
-        right: -100%;
+        left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100dvh;
         background: rgba(250, 249, 247, 0.98);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         color: var(--color-text);
-        z-index: -1;
-        transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        gap: var(--spacing-lg);
+        z-index: 99;
+        gap: 0;
+        /* Fade transition instead of right-slide */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
     }
 
     .main-nav.open {
-        right: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
+    /* Nav links in mobile overlay — large serif, staggered by GSAP */
     .main-nav a {
-        font-size: 2rem;
+        font-size: clamp(2rem, 8vw, 3.5rem);
         font-family: var(--font-serif);
+        font-weight: 400;
+        min-height: auto;
+        padding: 0.6rem 0;
+        letter-spacing: 1px;
+        /* GSAP sets the from-state on open; keep visible as fallback */
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Social hint at bottom of menu */
+    .menu-social {
+        position: absolute;
+        bottom: var(--space-lg);
+        display: flex;
+        gap: var(--space-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-sans);
+        color: var(--color-text-muted);
+        letter-spacing: 1px;
     }
 
     .hero-container {

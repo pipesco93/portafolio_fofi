@@ -9,7 +9,7 @@ The site must communicate **premium quality and professionalism at a glance**, e
 ## Related Links
 
 - **Live Site**: https://[YOUR-SITE-NAME].netlify.app ← update when connected
-- **GitHub Repo**: https://github.com/[YOUR-USERNAME]/portafolio_fofi ← update when created
+- **GitHub Repo**: https://github.com/pipesco93/portafolio_fofi
 - **Netlify Dashboard**: https://app.netlify.com
 
 ---
