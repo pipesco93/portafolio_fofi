@@ -2,24 +2,24 @@
   "projects": [
     {
       "id": "editorial-1",
-      "title": "Editorial — Volume I",
-      "brand": "Independent",
-      "year": "2025",
-      "category": "Editorial",
-      "tags": ["fashion", "editorial"],
+      "title": "Sientochenta - Noir",
+      "brand": "Sientochenta",
+      "year": "2022",
+      "category": "Brand photo shoot",
+      "tags": [
+        "fashion",
+        "editorial"
+      ],
       "featured": true,
       "coverImage": "fofi/portfolio/editorial-1/cover",
       "description": "A high-fashion editorial exploring texture, light, and movement. Shot on location in New York.",
       "images": [
+        "fofi/portfolio/editorial-1/cover",
         "fofi/portfolio/editorial-1/01",
-        "fofi/portfolio/editorial-1/02",
-        "fofi/portfolio/editorial-1/03",
-        "fofi/portfolio/editorial-1/04",
-        "fofi/portfolio/editorial-1/05",
-        "fofi/portfolio/editorial-1/06"
+        "fofi/portfolio/editorial-1/02"
       ],
       "photographer": "TBD",
-      "location": "New York, USA"
+      "location": "Manizales - Col"
     },
     {
       "id": "commercial-1",
@@ -27,7 +27,10 @@
       "brand": "TBD",
       "year": "2025",
       "category": "Commercial",
-      "tags": ["fashion", "commercial"],
+      "tags": [
+        "fashion",
+        "commercial"
+      ],
       "featured": true,
       "coverImage": "fofi/portfolio/commercial-1/cover",
       "description": "Commercial campaign shoot. Clean, versatile imagery for brand use across print and digital.",
@@ -48,7 +51,10 @@
       "brand": "Independent",
       "year": "2025",
       "category": "Beauty",
-      "tags": ["beauty", "portrait"],
+      "tags": [
+        "beauty",
+        "portrait"
+      ],
       "featured": true,
       "coverImage": "fofi/portfolio/beauty-1/cover",
       "description": "An intimate portrait series focused on natural beauty, skin, and raw emotion under soft natural light.",
@@ -69,7 +75,11 @@
       "brand": "TBD",
       "year": "2024",
       "category": "Commercial",
-      "tags": ["fashion", "commercial", "campaign"],
+      "tags": [
+        "fashion",
+        "commercial",
+        "campaign"
+      ],
       "featured": true,
       "coverImage": "fofi/portfolio/campaign-1/cover",
       "description": "Full brand campaign production. From concept to final delivery across all campaign touchpoints.",
@@ -90,7 +100,11 @@
       "brand": "Independent",
       "year": "2024",
       "category": "Editorial",
-      "tags": ["lifestyle", "editorial", "lookbook"],
+      "tags": [
+        "lifestyle",
+        "editorial",
+        "lookbook"
+      ],
       "featured": false,
       "coverImage": "fofi/portfolio/lifestyle-1/cover",
       "description": "Lifestyle lookbook shoot capturing movement and personality in natural outdoor settings.",
@@ -107,10 +121,25 @@
     }
   ],
   "brands": [
-    { "name": "Chanel", "logo": "/images/brands/chanel.svg" },
-    { "name": "Dior", "logo": "/images/brands/dior.svg" },
-    { "name": "Vogue", "logo": "/images/brands/vogue.svg" },
-    { "name": "Prada", "logo": "/images/brands/prada.svg" },
-    { "name": "Gucci", "logo": "/images/brands/gucci.svg" }
+    {
+      "name": "Chanel",
+      "logo": "/images/brands/chanel.svg"
+    },
+    {
+      "name": "Dior",
+      "logo": "/images/brands/dior.svg"
+    },
+    {
+      "name": "Vogue",
+      "logo": "/images/brands/vogue.svg"
+    },
+    {
+      "name": "Prada",
+      "logo": "/images/brands/prada.svg"
+    },
+    {
+      "name": "Gucci",
+      "logo": "/images/brands/gucci.svg"
+    }
   ]
 }
