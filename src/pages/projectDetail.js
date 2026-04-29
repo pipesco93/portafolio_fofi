@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import portfolioData from '../data/portfolio.json';
+import { cldUrl } from '../cloudinary.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,7 +70,7 @@ if (!projectId) {
     // Hero image — first in images array
     if (heroImgEl && project.images && project.images.length > 0) {
       const img = document.createElement('img');
-      img.src = project.images[0];
+      img.src = cldUrl(project.images[0], 1600);
       img.alt = `${project.title} — hero`;
       img.decoding = 'async';
       heroImgEl.appendChild(img);
@@ -82,7 +83,7 @@ if (!projectId) {
         div.className = 'gallery-item';
 
         const img = document.createElement('img');
-        img.src = src;
+        img.src = cldUrl(src, 1200);
         img.alt = `${project.title} — photo ${i + 2}`;
         img.loading = 'lazy';
         img.decoding = 'async';

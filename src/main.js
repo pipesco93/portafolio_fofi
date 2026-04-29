@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import portfolioData from './data/portfolio.json';
+import { cldUrl } from './cloudinary.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -170,7 +171,7 @@ if (grid) {
 
     if (project.coverImage) {
       const img = document.createElement('img');
-      img.src = project.coverImage;
+      img.src = cldUrl(project.coverImage, 800);
       img.alt = project.title;
       img.loading = 'lazy';
       img.decoding = 'async';
