@@ -22,6 +22,12 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
 }
 
 // ===========================
+// HEADER — always solid on inner pages (no hero backdrop)
+// ===========================
+const header = document.querySelector('.header');
+if (header) header.classList.add('scrolled');
+
+// ===========================
 // RENDER ALL PROJECTS GRID
 // ===========================
 const grid = document.getElementById('portfolio-grid-full');
@@ -57,8 +63,8 @@ if (grid) {
   });
 
   gsap.fromTo('.portfolio-item',
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.2 }
+    { y: 40 },
+    { y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.2, clearProps: 'transform' }
   );
 }
 

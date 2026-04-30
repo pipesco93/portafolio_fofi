@@ -105,14 +105,14 @@ window.addEventListener('load', () => {
   );
 
   tl.fromTo('.hero-image-wrapper',
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+    { y: 50 },
+    { y: 0, duration: 1.2, ease: 'power3.out', clearProps: 'transform' },
     '-=0.5'
   );
 
   tl.fromTo('#hero-img',
     { scale: 1.1 },
-    { scale: 1, duration: 1.5, ease: 'power2.out' },
+    { scale: 1, duration: 1.5, ease: 'power2.out', clearProps: 'transform' },
     '-=1.0'
   );
 
@@ -144,13 +144,6 @@ revealTargets.forEach(({ selector, start }) => {
   });
 });
 
-// Parallax on hero image — desktop only
-if (window.matchMedia('(min-width: 1024px)').matches) {
-  gsap.to('#hero-img', {
-    scrollTrigger: { trigger: '.hero', scrub: 1 },
-    y: -60
-  });
-}
 
 // ===========================
 // FEATURED WORK GRID
@@ -217,10 +210,11 @@ if (grid) {
   }
 
   gsap.fromTo('.portfolio-item',
-    { opacity: 0, y: 50 },
+    { y: 40 },
     {
-      opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-      scrollTrigger: { trigger: '.work', start: 'top 70%' }
+      y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+      scrollTrigger: { trigger: '.work', start: 'top 70%' },
+      clearProps: 'transform'
     }
   );
 }

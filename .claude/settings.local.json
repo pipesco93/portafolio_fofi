@@ -5,7 +5,8 @@
       "Read(///wsl.localhost/Ubuntu-22.04/home/pipesco93/Projects/vibe_code/portafolio_fofi/**)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git push *)"
     ]
   }
 }

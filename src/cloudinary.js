@@ -2,4 +2,4 @@
 export const CLOUD_NAME = 'dlbspj7vu';
 
 export const cldUrl = (publicId, width) =>
-  `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_${width},q_auto,f_auto/${publicId}`;
+  `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_${width},q_auto,f_webp,fl_strip_profile/${publicId}`;

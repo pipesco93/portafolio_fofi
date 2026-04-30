@@ -18,6 +18,12 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
 }
 
 // ===========================
+// HEADER — always solid on inner pages (no hero backdrop)
+// ===========================
+const header = document.querySelector('.header');
+if (header) header.classList.add('scrolled');
+
+// ===========================
 // LOAD PROJECT FROM URL PARAM
 // ===========================
 const params = new URLSearchParams(window.location.search);
@@ -139,15 +145,16 @@ if (!projectId) {
     );
 
     gsap.fromTo('.project-hero-image',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power2.out', delay: 0.5 }
+      { y: 30 },
+      { y: 0, duration: 1, ease: 'power2.out', delay: 0.5, clearProps: 'transform' }
     );
 
     gsap.fromTo('.gallery-item',
-      { opacity: 0, y: 50 },
+      { y: 40 },
       {
-        opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
-        scrollTrigger: { trigger: '.gallery-grid', start: 'top 85%' }
+        y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
+        scrollTrigger: { trigger: '.gallery-grid', start: 'top 85%' },
+        clearProps: 'transform'
       }
     );
 

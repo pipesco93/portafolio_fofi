@@ -17,6 +17,12 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
 }
 
 // ===========================
+// HEADER — always solid on inner pages (no hero backdrop)
+// ===========================
+const header = document.querySelector('.header');
+if (header) header.classList.add('scrolled');
+
+// ===========================
 // RENDER RATES GRID FROM JSON
 // ===========================
 const ratesGrid = document.getElementById('rates-grid');
