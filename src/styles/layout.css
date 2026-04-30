@@ -677,6 +677,7 @@ body.menu-open {
     /* Mobile hero: full-bleed image, text blended at bottom.
        Nav has solid dark bg (our earlier fix) so it's always readable above the image. */
     .header {
+        padding: 0.875rem 0;   /* shrink from 2rem → ~14px each side, nav ≈ 52px tall */
         color: var(--color-text);
         background-color: rgba(250, 249, 247, 0.98);
         border-bottom: 1px solid var(--color-border);
@@ -760,11 +761,13 @@ body.menu-open {
         letter-spacing: 1px;
     }
 
-    /* ─── HERO: full-bleed image, text at bottom ─── */
+    /* ─── HERO: starts below nav, fills remaining viewport exactly ─── */
     .hero {
         display: block;
         position: relative;
-        min-height: 85svh;
+        height: calc(100svh - 52px); /* viewport minus the smaller nav */
+        min-height: unset;
+        margin-top: 52px;            /* push below the nav — clear visual boundary */
     }
 
     .hero-panel-image {
@@ -773,19 +776,25 @@ body.menu-open {
         min-height: unset;
     }
 
-    /* Warm gradient: transparent top → near-opaque linen at bottom */
+    /* Show more of the model's body, not just the face at the top */
+    .hero-panel-image img {
+        object-position: center 20%;
+    }
+
+    /* Gradient: covers bottom 60% so the name sits right in the fading zone */
     .hero-panel-image::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        height: 82%;
+        height: 62%;
         background: linear-gradient(
             to top,
-            rgba(250, 249, 247, 0.98) 0%,
-            rgba(250, 249, 247, 0.80) 35%,
-            rgba(250, 249, 247, 0.30) 65%,
+            rgba(250, 249, 247, 0.99) 0%,
+            rgba(250, 249, 247, 0.90) 25%,
+            rgba(250, 249, 247, 0.55) 50%,
+            rgba(250, 249, 247, 0.15) 75%,
             transparent 100%
         );
     }
@@ -795,7 +804,7 @@ body.menu-open {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: var(--space-md) var(--space-md) var(--space-lg);
+        padding: var(--space-sm) var(--space-md) var(--space-md);
         justify-content: flex-end;
         z-index: 2;
         overflow: visible;
