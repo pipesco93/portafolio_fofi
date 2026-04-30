@@ -15,7 +15,7 @@
     width: 100%;
     padding: var(--spacing-md) 0;
     z-index: 100;
-    color: #fff;
+    color: var(--color-text);
     transition: background-color 0.45s ease, padding 0.45s ease, color 0.45s ease;
 }
 
@@ -116,7 +116,7 @@
 .hamburger span {
     width: 30px;
     height: 2px;
-    background: #fff;
+    background: var(--color-text);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     transform-origin: center;
@@ -342,10 +342,16 @@ body.menu-open {
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 0 var(--spacing-md) var(--space-md);
+    padding: 0 0 var(--space-md);
+    /* scroll-padding ensures snap respects the visual offset */
+    scroll-padding-left: var(--spacing-md);
     scrollbar-width: thin;
     scrollbar-color: var(--color-accent-light) transparent;
 }
+
+/* First/last card carry the horizontal margin so scroll snap sees it correctly */
+.archive-card:first-child { margin-left: var(--spacing-md); }
+.archive-card:last-child  { margin-right: var(--spacing-md); }
 
 .archive-strip::-webkit-scrollbar {
     height: 3px;
@@ -758,7 +764,7 @@ body.menu-open {
     .hero {
         display: block;
         position: relative;
-        min-height: 100svh;
+        min-height: 85svh;
     }
 
     .hero-panel-image {
@@ -774,11 +780,12 @@ body.menu-open {
         bottom: 0;
         left: 0;
         right: 0;
-        height: 70%;
+        height: 82%;
         background: linear-gradient(
             to top,
-            rgba(250, 249, 247, 0.97) 0%,
-            rgba(250, 249, 247, 0.65) 45%,
+            rgba(250, 249, 247, 0.98) 0%,
+            rgba(250, 249, 247, 0.80) 35%,
+            rgba(250, 249, 247, 0.30) 65%,
             transparent 100%
         );
     }
@@ -788,7 +795,7 @@ body.menu-open {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: var(--space-lg) var(--space-md) var(--space-xl);
+        padding: var(--space-md) var(--space-md) var(--space-lg);
         justify-content: flex-end;
         z-index: 2;
         overflow: visible;
