@@ -14,7 +14,7 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
     gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' });
   });
 
-  document.querySelectorAll('a, button, .portfolio-item').forEach(el => {
+  document.querySelectorAll('a, button, .archive-card').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
   });
@@ -31,7 +31,7 @@ if (header) {
     header.classList.toggle('scrolled', window.scrollY > 60);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Run once on load in case page is already scrolled
+  onScroll();
 }
 
 // ===========================
@@ -46,7 +46,6 @@ function openMenu() {
   mainNav.classList.add('open');
   document.body.classList.add('menu-open');
 
-  // GSAP stagger — links slide up and fade in
   gsap.fromTo(navLinks,
     { y: 30, opacity: 0 },
     { y: 0, opacity: 1, stagger: 0.08, duration: 0.55, ease: 'power3.out', delay: 0.1 }
@@ -54,7 +53,6 @@ function openMenu() {
 }
 
 function closeMenu() {
-  // Animate links out, then hide overlay
   gsap.to(navLinks, {
     y: -20, opacity: 0, stagger: 0.04, duration: 0.25, ease: 'power2.in',
     onComplete: () => {
@@ -74,17 +72,14 @@ if (hamburger && mainNav) {
     }
   });
 
-  // Close when a nav link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Close on tap outside the nav (on the overlay backdrop)
   mainNav.addEventListener('click', (e) => {
     if (e.target === mainNav) closeMenu();
   });
 
-  // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mainNav.classList.contains('open')) closeMenu();
   });
@@ -94,45 +89,71 @@ if (hamburger && mainNav) {
 // HERO ANIMATIONS
 // ===========================
 window.addEventListener('load', () => {
-  // Skip animations if user prefers reduced motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-  tl.fromTo('.title-line',
-    { y: 100, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, stagger: 0.12, ease: 'power4.out' }
-  );
-
-  tl.fromTo('.hero-image-wrapper',
-    { y: 50 },
-    { y: 0, duration: 1.2, ease: 'power3.out', clearProps: 'transform' },
-    '-=0.5'
-  );
-
+  // Left panel: image scales gently into view
   tl.fromTo('#hero-img',
-    { scale: 1.1 },
-    { scale: 1, duration: 1.5, ease: 'power2.out', clearProps: 'transform' },
-    '-=1.0'
+    { scale: 1.08 },
+    { scale: 1, duration: 1.8, ease: 'power2.out', clearProps: 'transform' },
+    0
   );
 
-  tl.fromTo('.hero-subtitle',
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-    '-=0.8'
+  // Eyebrow fades up
+  tl.fromTo('.hero-eyebrow',
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.7 },
+    0.3
   );
+
+  // Name lines clip up from inside overflow:hidden
+  tl.fromTo('.name-inner',
+    { yPercent: 105 },
+    { yPercent: 0, duration: 1.1, stagger: 0.18, clearProps: 'transform' },
+    0.45
+  );
+
+  // Rule scales from left
+  tl.fromTo('.hero-rule',
+    { scaleX: 0, transformOrigin: 'left center' },
+    { scaleX: 1, duration: 0.6 },
+    1.1
+  );
+
+  // Agency text
+  tl.fromTo('.hero-agency',
+    { opacity: 0, y: 12 },
+    { opacity: 1, y: 0, duration: 0.6 },
+    1.25
+  );
+
+  // Explore button
+  tl.fromTo('.hero-explore',
+    { opacity: 0, y: 10 },
+    { opacity: 1, y: 0, duration: 0.5 },
+    1.45
+  );
+
+  // Arrow bounces gently after load
+  gsap.to('.hero-explore-arrow', {
+    y: 7, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.0
+  });
+
+  // Explore button scrolls to archive
+  document.querySelector('.hero-explore')?.addEventListener('click', () => {
+    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
 // ===========================
 // SCROLL REVEALS
 // ===========================
 const revealTargets = [
-  { selector: '.about-text', start: 'top 85%' },
-  { selector: '.section-title', start: 'top 88%' },
-  { selector: '.contact-header', start: 'top 88%' },
-  { selector: '.cta-block h2', start: 'top 85%' },
-  { selector: '.cta-actions', start: 'top 88%' },
-  { selector: '.footer-container', start: 'top 95%' },
+  { selector: '.archive-heading',      start: 'top 88%' },
+  { selector: '.measurements-heading', start: 'top 88%' },
+  { selector: '.contact-header',       start: 'top 88%' },
+  { selector: '.footer-container',     start: 'top 95%' },
 ];
 
 revealTargets.forEach(({ selector, start }) => {
@@ -144,77 +165,84 @@ revealTargets.forEach(({ selector, start }) => {
   });
 });
 
-
 // ===========================
-// FEATURED WORK GRID
+// ARCHIVE STRIP (horizontal scroll)
 // ===========================
-const grid = document.getElementById('portfolio-grid');
-if (grid) {
+const archiveStrip = document.getElementById('archive-strip');
+if (archiveStrip) {
   const featured = portfolioData.projects
     .filter(p => p.featured)
-    .slice(0, 4);
+    .slice(0, 6);
 
-  featured.forEach(project => {
-    const link = document.createElement('a');
-    link.href = `/project-detail.html?id=${project.id}`;
-    link.setAttribute('aria-label', project.title);
+  featured.forEach((project, i) => {
+    const size = i % 2 === 0 ? 'tall' : 'short';
 
-    const item = document.createElement('div');
-    item.className = 'portfolio-item';
+    const card = document.createElement('a');
+    card.href = `/project-detail.html?id=${project.id}`;
+    card.className = 'archive-card';
+    card.setAttribute('data-size', size);
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('aria-label', project.title);
+
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'archive-card-image';
 
     if (project.coverImage) {
       const img = document.createElement('img');
-      img.src = cldUrl(project.coverImage, 800);
+      img.src = cldUrl(project.coverImage, 640);
       img.alt = project.title;
       img.loading = 'lazy';
       img.decoding = 'async';
-      item.appendChild(img);
+      imgWrap.appendChild(img);
     }
 
-    const overlay = document.createElement('div');
-    overlay.className = 'portfolio-item-overlay';
-    overlay.innerHTML = `
-      <span class="portfolio-item-brand">${project.brand || ''}</span>
-      <span class="portfolio-item-title">${project.title}</span>
+    const caption = document.createElement('div');
+    caption.className = 'archive-card-caption';
+    caption.innerHTML = `
+      <span class="archive-card-category">${project.category || ''}</span>
+      <span class="archive-card-meta">${project.location || ''} &nbsp;·&nbsp; ${project.year || ''}</span>
     `;
-    item.appendChild(overlay);
 
-    link.appendChild(item);
-    grid.appendChild(link);
+    card.appendChild(imgWrap);
+    card.appendChild(caption);
+    archiveStrip.appendChild(card);
   });
 
-  // Touch: tap to reveal overlay, tap again to navigate
+  // Touch: tap-first-to-preview, tap-again-to-navigate
   if (window.matchMedia('(pointer: coarse)').matches) {
-    grid.querySelectorAll('.portfolio-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        if (!item.classList.contains('touch-active')) {
+    archiveStrip.querySelectorAll('.archive-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (!card.classList.contains('touch-active')) {
           e.preventDefault();
-          // Close any other open items
-          grid.querySelectorAll('.portfolio-item.touch-active').forEach(other => {
-            other.classList.remove('touch-active');
-          });
-          item.classList.add('touch-active');
+          archiveStrip.querySelectorAll('.archive-card.touch-active')
+            .forEach(c => c.classList.remove('touch-active'));
+          card.classList.add('touch-active');
         }
-        // If already active, let the link navigate (don't preventDefault)
       });
     });
 
-    // Tap outside closes touch overlays
     document.addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.portfolio-item')) {
-        grid.querySelectorAll('.portfolio-item.touch-active').forEach(item => {
-          item.classList.remove('touch-active');
-        });
+      if (!e.target.closest('.archive-card')) {
+        archiveStrip.querySelectorAll('.archive-card.touch-active')
+          .forEach(c => c.classList.remove('touch-active'));
       }
     }, { passive: true });
   }
 
-  gsap.fromTo('.portfolio-item',
-    { y: 40 },
+  // Fade scroll hint once user scrolls the strip
+  const scrollHint = document.getElementById('archive-scroll-hint');
+  if (scrollHint) {
+    archiveStrip.addEventListener('scroll', () => {
+      if (archiveStrip.scrollLeft > 40) scrollHint.classList.add('is-hidden');
+    }, { passive: true });
+  }
+
+  gsap.fromTo('.archive-card',
+    { opacity: 0, y: 40 },
     {
-      y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-      scrollTrigger: { trigger: '.work', start: 'top 70%' },
-      clearProps: 'transform'
+      opacity: 1, y: 0, duration: 0.85, stagger: 0.1, ease: 'power3.out',
+      clearProps: 'transform,opacity',
+      scrollTrigger: { trigger: '.archive', start: 'top 75%' }
     }
   );
 }
@@ -231,7 +259,6 @@ if (marqueeTrack && portfolioData.brands.length) {
     marqueeTrack.appendChild(el);
   });
 
-  // Duplicate for seamless loop
   marqueeTrack.innerHTML += marqueeTrack.innerHTML;
 
   const marqueeAnim = gsap.to('.marquee-track', {
@@ -243,6 +270,44 @@ if (marqueeTrack && portfolioData.brands.length) {
 
   marqueeTrack.addEventListener('mouseenter', () => marqueeAnim.pause());
   marqueeTrack.addEventListener('mouseleave', () => marqueeAnim.resume());
+}
+
+// ===========================
+// MEASUREMENTS SECTION
+// ===========================
+const measGrid = document.getElementById('measurements-grid');
+if (measGrid && portfolioData.model) {
+  const m = portfolioData.model.measurements;
+  const cells = [
+    { label: 'Height', value: m.height.imperial, metric: m.height.metric },
+    { label: 'Bust',   value: m.bust.imperial,   metric: m.bust.metric   },
+    { label: 'Waist',  value: m.waist.imperial,  metric: m.waist.metric  },
+    { label: 'Hips',   value: m.hips.imperial,   metric: m.hips.metric   },
+    { label: 'Hair',   value: m.hair,             metric: null },
+    { label: 'Eyes',   value: m.eyes,             metric: null },
+    { label: 'Shoes',  value: m.shoes,            metric: null },
+    { label: 'Dress',  value: m.dress,            metric: null },
+  ];
+
+  cells.forEach(cell => {
+    const div = document.createElement('div');
+    div.className = 'measurement-cell';
+    div.innerHTML = `
+      <span class="measurement-label">${cell.label}</span>
+      <span class="measurement-value">${cell.value}</span>
+      ${cell.metric ? `<span class="measurement-metric">${cell.metric}</span>` : ''}
+    `;
+    measGrid.appendChild(div);
+  });
+
+  gsap.fromTo('.measurement-cell',
+    { opacity: 0, y: 25 },
+    {
+      opacity: 1, y: 0, duration: 0.65, stagger: 0.07, ease: 'power2.out',
+      clearProps: 'transform,opacity',
+      scrollTrigger: { trigger: '.measurements', start: 'top 80%' }
+    }
+  );
 }
 
 // ===========================

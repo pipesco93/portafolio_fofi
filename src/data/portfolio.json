@@ -120,6 +120,24 @@
       "location": "TBD"
     }
   ],
+  "model": {
+    "name": "Sofia Castaño Isaza",
+    "initials": "SCI",
+    "agency": "Agency Name",
+    "locations": ["Medellín", "Bogotá", "New York"],
+    "heroCaption": "SS 2026 · MEDELLÍN",
+    "measurements": {
+      "height": { "imperial": "5'10\"", "metric": "177 cm" },
+      "bust":   { "imperial": "33\"",   "metric": "84 cm" },
+      "waist":  { "imperial": "24\"",   "metric": "61 cm" },
+      "hips":   { "imperial": "35\"",   "metric": "89 cm" },
+      "hair":   "Brown",
+      "eyes":   "Green",
+      "shoes":  "9 US / 39 EU",
+      "dress":  "2 US / 34 EU"
+    },
+    "compCardUrl": "/comp-card.pdf"
+  },
   "brands": [
     {
       "name": "Chanel",

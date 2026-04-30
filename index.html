@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fofi — Model Portfolio</title>
+  <title>Sofia Castaño Isaza — International Fashion Model</title>
 
   <!-- Preload hero image for fast LCP -->
   <link rel="preload" as="image" href="https://res.cloudinary.com/dlbspj7vu/image/upload/w_1920,q_auto,f_webp/fofi/portfolio/cover/cover" />
@@ -31,17 +31,16 @@
   <!-- Navigation -->
   <header class="header">
     <div class="container nav-container">
-      <a href="/" class="logo">FOFI</a>
+      <a href="/" class="logo">SCI</a>
       <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       <nav class="main-nav">
-        <a href="/" class="active">Home</a>
-        <a href="/projects.html">Work</a>
-        <a href="/rates.html">Rates</a>
+        <a href="/projects.html">Archive</a>
+        <a href="/rates.html">Blueprint</a>
         <a href="#contact">Contact</a>
         <!-- SOCIAL — visible only in mobile overlay -->
         <div class="menu-social">
           <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="mailto:fofi@example.com" aria-label="Email">Email</a>
+          <a href="mailto:sofia@example.com" aria-label="Email">Email</a>
         </div>
       </nav>
     </div>
@@ -49,49 +48,57 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
+
+    <!-- Hero Section — Split Screen -->
     <section class="hero" id="home">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="overflow-hidden"><span class="title-line">Elegance</span></span>
-            <span class="overflow-hidden"><span class="title-line italic">&</span></span>
-            <span class="overflow-hidden"><span class="title-line">Versatility</span></span>
-          </h1>
-          <p class="hero-subtitle">International Fashion Model · New York</p>
-        </div>
-        <div class="hero-image-wrapper">
-          <img
-            src="https://res.cloudinary.com/dlbspj7vu/image/upload/w_1920,q_auto,f_webp/fofi/portfolio/cover/cover"
-            alt="Fofi — Fashion Model"
-            class="hero-image"
-            id="hero-img"
-            decoding="async"
-          />
-        </div>
+      <!-- Left panel: full-height photo -->
+      <div class="hero-panel-image">
+        <img
+          src="https://res.cloudinary.com/dlbspj7vu/image/upload/w_1920,q_auto,f_webp/fofi/portfolio/cover/cover"
+          alt="Sofia Castaño Isaza — Fashion Model"
+          id="hero-img"
+          decoding="async"
+        />
+        <span class="hero-image-caption">SS 2026 · MEDELLÍN</span>
       </div>
-    </section>
 
-    <!-- About Section -->
-    <!-- BIO -->
-    <section class="about" id="about">
-      <div class="container about-container">
-        <p class="about-text">
-          Available for editorial, commercial, and brand campaigns.
+      <!-- Right panel: editorial text content -->
+      <div class="hero-panel-text">
+        <span class="hero-watermark" aria-hidden="true">Sofia</span>
+
+        <p class="hero-eyebrow">International Fashion Model</p>
+
+        <h1 class="hero-name">
+          <span class="name-line"><span class="name-inner">Sofia</span></span>
+          <span class="name-line"><span class="name-inner">Castaño Isaza</span></span>
+        </h1>
+
+        <div class="hero-rule" aria-hidden="true"></div>
+
+        <p class="hero-agency">
+          Represented by <strong>Agency Name</strong>.<br>
+          Medellín · Bogotá · New York
         </p>
+
+        <button class="hero-explore" aria-label="Scroll to explore work">
+          <span class="hero-explore-arrow">↓</span>
+          <span>Explore</span>
+        </button>
       </div>
     </section>
 
-    <!-- Featured Work -->
-    <section class="work" id="work">
-      <div class="container work-container">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-lg);">
-          <h2 class="section-title" style="margin-bottom: 0;">Selected Work</h2>
-          <a href="/projects.html" class="cta-link">See all work</a>
+    <!-- Archive Section — horizontal scroll -->
+    <section class="archive" id="work">
+      <div class="archive-header">
+        <div>
+          <span class="section-eyebrow">Selected Works</span>
+          <h2 class="archive-heading">The Archive</h2>
         </div>
-        <!-- Featured projects injected from portfolio.json -->
-        <div class="portfolio-grid" id="portfolio-grid"></div>
+        <a href="/projects.html" class="cta-link">See all work</a>
       </div>
+      <!-- Cards injected by main.js -->
+      <div class="archive-strip" id="archive-strip" role="list" aria-label="Selected work portfolio"></div>
+      <p class="archive-scroll-hint" id="archive-scroll-hint" aria-hidden="true">Scroll to explore &nbsp;→</p>
     </section>
 
     <!-- Brand Marquee -->
@@ -103,28 +110,33 @@
       </div>
     </section>
 
-    <!-- CTA Block -->
-    <section class="cta-block" id="contact">
+    <!-- Measurements Section -->
+    <section class="measurements" id="blueprint">
       <div class="container">
-        <h2>Let's create something.</h2>
-        <div class="cta-actions">
-          <!-- SOCIAL -->
-          <a href="mailto:fofi@example.com" class="btn btn-primary">Send an email</a>
-          <a href="/projects.html" class="cta-link">View all work</a>
+        <div class="measurements-header">
+          <span class="section-eyebrow">The Blueprint</span>
+          <h2 class="measurements-heading">Measurements</h2>
+        </div>
+        <!-- Cells injected by main.js from portfolioData.model -->
+        <div class="measurements-grid" id="measurements-grid"></div>
+        <div class="measurements-cta">
+          <a href="/comp-card.pdf" class="btn-comp-card" download aria-label="Download comp card PDF">
+            Download Comp Card
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Contact Form -->
-    <section class="contact">
+    <section class="contact" id="contact">
       <div class="container contact-container">
         <div class="contact-header">
-          <h2 class="section-title">Get in touch</h2>
+          <span class="section-eyebrow">The Liaison</span>
+          <h2 class="contact-heading-serif">Let's Work Together</h2>
           <p style="color: var(--color-text-muted);">Available for bookings and collaborations globally.</p>
         </div>
         <form
           class="contact-form"
-          id="contact-form"
           name="contact"
           method="POST"
           data-netlify="true"
@@ -161,18 +173,18 @@
         </form>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-container">
-      <a href="/" class="logo">FOFI</a>
-      <!-- SOCIAL -->
+      <a href="/" class="logo">SCI</a>
       <div class="social-links">
         <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="mailto:fofi@example.com" aria-label="Email">Email</a>
+        <a href="mailto:sofia@example.com" aria-label="Email">Email</a>
       </div>
-      <p style="color: var(--color-text-muted); font-size: var(--text-xs);">&copy; 2026 Fofi. All rights reserved.</p>
+      <p style="color: var(--color-text-muted); font-size: var(--text-xs);">&copy; 2026 Sofia Castaño Isaza. All rights reserved.</p>
     </div>
   </footer>
 

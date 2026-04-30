@@ -53,4 +53,10 @@
      TRANSITIONS
      =========================== */
   --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ===========================
+     HERO / EDITORIAL
+     =========================== */
+  --hero-panel-left: 50vw;    /* left image panel width on desktop */
+  --text-eyebrow: 0.6875rem;  /* 11px — small-caps eyebrow labels */
 }

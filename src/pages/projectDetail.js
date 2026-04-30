@@ -48,7 +48,7 @@ if (!projectId) {
     if (titleEl) titleEl.textContent = 'Project not found';
   } else {
     // Update page title
-    document.title = `${project.title} — Fofi`;
+    document.title = `${project.title} — Sofia Castaño Isaza`;
 
     // Brand label
     if (brandEl) brandEl.textContent = project.brand || '';
